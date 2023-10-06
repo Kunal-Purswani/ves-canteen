@@ -595,7 +595,7 @@ function ClientDataFlow(addToCartBtn){
             const userEmailID = user.email
             var trimedEmailID = makeUserDataID(userEmailID);
             console.log(trimedEmailID);
-            if(trimedEmailID == 'd2020.kunal.purswani'){
+            if(trimedEmailID == 'd2020.kunal.purswani' || trimedEmailID == '2020.yashodeep.dandegaonkar'){
                 window.location = 'https://kunal-purswani.github.io/ves_canteen/admin-side.html'
             }
 
