@@ -257,14 +257,14 @@ function customerFooterUI() {
                     <!-- About College -->
                     <article class="about">
                         <h1 class="sm">about</h1>
-                        <p>Malwa Institute of Technology is governed by Indus 
+                        <p>Vivekanand Education Society's Institute of Technology is governed by Indus 
                         Global Educational & Welfare Society which was founded 
                         in 2003 by a group of industrialists and educationalists
                         who shared a vision of establishing centers of scientific
                         learning around the country.</p>
                         <ul class="py-1">
-                            <li><i class="fab fa-facebook-f"></i><a href="https://www.facebook.com/malwainstitute/" target="_blank"> Facebook</a></li>
-                            <li><i class="fab fa-instagram"></i><a href="https://www.instagram.com/malwa_institute_of_technology/" target="_blank">Instagram</a></li>
+                            <li><i class="fab fa-facebook-f"></i><a href="/" target="_blank"> Facebook</a></li>
+                            <li><i class="fab fa-instagram"></i><a href="/" target="_blank">Instagram</a></li>
                         </ul>
                     </article>
                     <!-- Navigation Links -->
