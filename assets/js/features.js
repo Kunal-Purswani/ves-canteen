@@ -291,7 +291,7 @@ function customerFooterUI() {
                 <!-- Deep Devs Info -->
                 <main class="deep-devs flex">
                     <div>© Copyright 2020 - 2021. All Rights Reserved</div>
-                    <div class="">Designed & Developed with <i class="fas fa-heart clr-red"></i> By <a href="#">Deep Devs</a></div>
+                    <div class="">Designed & Developed with <i class="fas fa-heart clr-red"></i> By <a href="#">D20B Group 17</a></div>
                 </main>
             </section>
         `;
