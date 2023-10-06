@@ -273,8 +273,8 @@ function customerFooterUI() {
                             <h1 class="sm">Quick Links</h1>
                             <li><a href="index.html">Canteen Home</a></li>
                             <li><a href="our-vision.html">Our Vision</a></li>
-                            <li><a href="https://github.com/rvutd/mit-canteen-site" target="_blank">Git Repository</a></li>
-                            <li><a href="https://mitindore.co.in/" target="_blank">VESIT</a></li>
+                            <li><a href="/" target="_blank">Git Repository</a></li>
+                            <li><a href="/" target="_blank">VESIT</a></li>
                         </ul>
                     </article>
                     <!-- Contact Details -->
@@ -312,14 +312,14 @@ function userFooterUI() {
                     <!-- About College -->
                     <article class="about">
                         <h1 class="sm">about</h1>
-                        <p>Malwa Institute of Technology is governed by Indus 
+                        <p>Vivekanand Education Society's Institute of Technology is governed by Indus 
                         Global Educational & Welfare Society which was founded 
                         in 2003 by a group of industrialists and educationalists
                         who shared a vision of establishing centers of scientific
                         learning around the country.</p>
                         <ul class="py-1">
-                            <li><i class="fab fa-facebook-f"></i><a href="https://www.facebook.com/malwainstitute/" target="_blank"> Facebook</a></li>
-                            <li><i class="fab fa-instagram"></i><a href="https://www.instagram.com/malwa_institute_of_technology/" target="_blank">Instagram</a></li>
+                            <li><i class="fab fa-facebook-f"></i><a href="/" target="_blank"> Facebook</a></li>
+                            <li><i class="fab fa-instagram"></i><a href="/" target="_blank">Instagram</a></li>
                         </ul>
                     </article>
                     <!-- Navigation Links -->
@@ -328,8 +328,8 @@ function userFooterUI() {
                             <h1 class="sm">Quick Links</h1>
                             <li><a href="client-side.html">Menu</a></li>
                             <li><a href="user-orders.html">Your Orders</a></li>
-                            <li><a href="https://github.com/rvutd/mit-canteen-site" target="_blank">Git Repository</a></li>
-                            <li><a href="https://mitindore.co.in/" target="_blank">VESIT</a></li>
+                            <li><a href="/" target="_blank">Git Repository</a></li>
+                            <li><a href="/" target="_blank">VESIT</a></li>
                         </ul>
                     </article>
                     <!-- Contact Details -->
@@ -346,7 +346,7 @@ function userFooterUI() {
                 <!-- Deep Devs Info -->
                 <main class="deep-devs flex">
                     <div>© Copyright 2020 - 2021. All Rights Reserved</div>
-                    <div class="">Designed & Developed with <i class="fas fa-heart clr-red"></i> By <a href="#">Deep Devs</a></div>
+                    <div class="">Designed & Developed with <i class="fas fa-heart clr-red"></i> By <a href="#">D20B Group 17</a></div>
                 </main>
             </section>
         `;
