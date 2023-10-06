@@ -290,7 +290,7 @@ function customerFooterUI() {
                 </main>
                 <!-- Deep Devs Info -->
                 <main class="deep-devs flex">
-                    <div>© Copyright 2020 - 2021. All Rights Reserved</div>
+                    <div>© Copyright 2023 - 2024. All Rights Reserved</div>
                     <div class="">Designed & Developed with <i class="fas fa-heart clr-red"></i> By <a href="#">D20B Group 17</a></div>
                 </main>
             </section>
@@ -345,7 +345,7 @@ function userFooterUI() {
                 </main>
                 <!-- Deep Devs Info -->
                 <main class="deep-devs flex">
-                    <div>© Copyright 2020 - 2021. All Rights Reserved</div>
+                    <div>© Copyright 2023 - 2024. All Rights Reserved</div>
                     <div class="">Designed & Developed with <i class="fas fa-heart clr-red"></i> By <a href="#">D20B Group 17</a></div>
                 </main>
             </section>
