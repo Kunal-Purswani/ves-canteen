@@ -42,6 +42,12 @@ body {
   color: #333;
 }
 
+.index-image{
+  height: 300px;
+  width: 300px;
+  object-fit: contain;
+}
+
 /* Scroll Bar */
 ::-webkit-scrollbar {
   width: 8px;

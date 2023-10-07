@@ -257,11 +257,7 @@ function customerFooterUI() {
                     <!-- About College -->
                     <article class="about">
                         <h1 class="sm">about</h1>
-                        <p>Vivekanand Education Society's Institute of Technology is governed by Indus 
-                        Global Educational & Welfare Society which was founded 
-                        in 2003 by a group of industrialists and educationalists
-                        who shared a vision of establishing centers of scientific
-                        learning around the country.</p>
+                        <p>Vivekanand Education Society’s Institute of Technology (VESIT) was established in 1984, with the aim of providing professional education in the field of Engineering. This institute is affiliated to the University of Mumbai and follows the rules and regulations laid down by government, AICTE, and University for admission; 51% reserved for Sindhi Linguistic minority and 49% through CAP test. The management quota has been surrendered to DTE to make admission centralized.</p>
                         <ul class="py-1">
                             <li><i class="fab fa-facebook-f"></i><a href="/" target="_blank"> Facebook</a></li>
                             <li><i class="fab fa-instagram"></i><a href="/" target="_blank">Instagram</a></li>
@@ -281,10 +277,11 @@ function customerFooterUI() {
                     <article class="contact">
                         <ul>
                             <h1 class="sm">Contact Information</h1>
-                            <li> <i class="fas fa-phone-alt"></i> <p>+91-731-2810001-08</p></li>
-                            <li> <i class="fas fa-envelope"></i> <p>admission@mitindore.co.in</p></li>
-                            <li> <i class="fas fa-map-marker-alt"></i> <p>Indore-Dewas Bypass Road, Indore (MP)-452016</p></li>
-                            <li> <i class="fas fa-globe-asia"></i> <p>For Professional Courses, Visit: www.altius.ac.in</p></li>
+                            <li> <i class="fas fa-phone-alt"></i> <p>+91-22-61532510 / 27 (Admission)</p></li>
+                            <li> <i class="fas fa-envelope"></i> <p>vesit.admission@ves.ac.in</p></li>
+                            <li> <i class="fas fa-map-marker-alt"></i> <p>Hashu Advani Memorial Complex, Collector's Colony
+Chembur, Mumbai, Maharashtra 400074</p></li>
+                            <li> <i class="fas fa-globe-asia"></i> <p>Visit: https://vesit.ves.ac.in</p></li>
                         </ul>
                     </article>
                 </main>
@@ -312,11 +309,7 @@ function userFooterUI() {
                     <!-- About College -->
                     <article class="about">
                         <h1 class="sm">about</h1>
-                        <p>Vivekanand Education Society's Institute of Technology is governed by Indus 
-                        Global Educational & Welfare Society which was founded 
-                        in 2003 by a group of industrialists and educationalists
-                        who shared a vision of establishing centers of scientific
-                        learning around the country.</p>
+                        <p>Vivekanand Education Society’s Institute of Technology (VESIT) was established in 1984, with the aim of providing professional education in the field of Engineering. This institute is affiliated to the University of Mumbai and follows the rules and regulations laid down by government, AICTE, and University for admission; 51% reserved for Sindhi Linguistic minority and 49% through CAP test. The management quota has been surrendered to DTE to make admission centralized.</p>
                         <ul class="py-1">
                             <li><i class="fab fa-facebook-f"></i><a href="/" target="_blank"> Facebook</a></li>
                             <li><i class="fab fa-instagram"></i><a href="/" target="_blank">Instagram</a></li>
@@ -335,11 +328,12 @@ function userFooterUI() {
                     <!-- Contact Details -->
                     <article class="contact">
                         <ul>
-                            <h1 class="sm">Contact Information</h1>
-                            <li> <i class="fas fa-phone-alt"></i> <p>+91-731-2810001-08</p></li>
-                            <li> <i class="fas fa-envelope"></i> <p>admission@mitindore.co.in</p></li>
-                            <li> <i class="fas fa-map-marker-alt"></i> <p>Indore-Dewas Bypass Road, Indore (MP)-452016</p></li>
-                            <li> <i class="fas fa-globe-asia"></i> <p>For Professional Courses, Visit: www.altius.ac.in</p></li>
+                             <h1 class="sm">Contact Information</h1>
+                            <li> <i class="fas fa-phone-alt"></i> <p>+91-22-61532510 / 27 (Admission)</p></li>
+                            <li> <i class="fas fa-envelope"></i> <p>vesit.admission@ves.ac.in</p></li>
+                            <li> <i class="fas fa-map-marker-alt"></i> <p>Hashu Advani Memorial Complex, Collector's Colony
+Chembur, Mumbai, Maharashtra 400074</p></li>
+                            <li> <i class="fas fa-globe-asia"></i> <p>Visit: https://vesit.ves.ac.in</p></li>
                         </ul>
                     </article>
                 </main>
