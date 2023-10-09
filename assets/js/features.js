@@ -383,6 +383,7 @@ function setOrderDetails(trimedEmailID){
                 var deliveryStatus = data[key].Delivery_Status
                 var UserCart = data[key].User_Cart.Details
                 var orderStatus = data[key].Order_Status
+                var cookingStatus = data[key].Cooking_Status
                 var trimedID = '';
                 var orderID = 'UO' + date
 
@@ -396,9 +397,8 @@ function setOrderDetails(trimedEmailID){
                     i += 1
                     
                     // Check Order If accepted or not
-                    if (orderStatus === true){ orderStatus = 'Cooking' } 
-                    else { orderStatus = 'Not Available' }
-
+                    if (orderStatus === true){ orderStatus = 'Order Received' } 
+                    if (cookingStatus === true){ orderStatus = 'Cooking'}
                     if (deliveryStatus === true){ orderStatus = 'Ready' }
 
                     // --- Creates Main Container ---

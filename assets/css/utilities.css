@@ -4,6 +4,26 @@
     padding: 0 40px; overflow: auto;
 }
 
+.width-10{
+    width: 10rem;
+}
+
+.width-15{
+    width: 15rem;
+}
+
+.width-20{
+    width: 20rem;
+}
+
+.height-2h{
+    height: 2.5rem;
+}
+
+.mt-1{
+    margin-top: 1rem!important;
+}
+
 .container-min { max-width: 1300px; margin: 0 auto; }
 
 /* Display Sections */
@@ -49,6 +69,22 @@
 .align-item-center { align-items: center; }
 
 .jc-ai-center { justify-content: center; align-content: center; }
+
+.jc{
+    justify-content: center;
+}
+
+.ac{
+    align-items: center;
+}
+
+.space-between{
+    justify-content: space-between;
+}
+
+.flex1{
+    flex: 1;
+}
 
 /* Buttons */
 button {cursor: pointer;}
