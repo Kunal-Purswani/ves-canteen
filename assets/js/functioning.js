@@ -104,7 +104,7 @@
 
     static authRedirecting() {
       window.setTimeout(() => {
-        window.location.replace('http://127.0.0.1:5502/client-side.html');
+        window.location.replace('https://kunal-purswani/ves_canteen/client-side.html');
       }, 500)
     }
 
@@ -121,7 +121,7 @@
     firebaseAuthRedirect(){
       firebase.auth().onAuthStateChanged(function(user) {
         // If user is registered -
-        user ?  window.location.replace('http://127.0.0.1:5502/client-side.html') : console.log('none');
+        user ?  window.location.replace('https://kunal-purswani/ves_canteen/client-side.html') : console.log('none');
       });
     }
   }
@@ -232,7 +232,7 @@
             title: 'Logged Out Successfully',
           })
           firebase.auth().signOut().then(() => {
-            window.location.replace("http://127.0.0.1:5502/")
+            window.location.replace("https://kunal-purswani/ves_canteen/")
           });
         });
       })
