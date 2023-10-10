@@ -952,3 +952,30 @@ tr {
 #custom .bold {
   margin-bottom: 1.5rem;
 }
+
+#myTable_wrapper, #myTable_length, #myTable_filter{
+  width: 95%!important;
+}
+
+#myTable{
+  width: 100%!important;
+}
+
+#myTable_wrapper{
+  overflow: scroll;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  pointer-events: all !important;
+}
+
+.ord-details{
+  color:#fff;
+  text-decoration: none;
+}
+
+.ord-details:hover{
+  color:#fff;
+  text-decoration: none;
+}

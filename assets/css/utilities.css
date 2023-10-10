@@ -4,6 +4,16 @@
     padding: 0 40px; overflow: auto;
 }
 
+.contain{
+    min-width: 300px;
+    max-width: 450px;
+    width:80%
+}
+
+.width-8{
+    width: 8rem;
+}
+
 .width-10{
     width: 10rem;
 }
@@ -22,6 +32,14 @@
 
 .mt-1{
     margin-top: 1rem!important;
+}
+
+.mat-1{
+    margin-top: 1rem!important;
+}
+
+.mat-2{
+    margin-top: 2rem!important;
 }
 
 .container-min { max-width: 1300px; margin: 0 auto; }
@@ -76,6 +94,10 @@
 
 .ac{
     align-items: center;
+}
+
+.ais{
+    align-items: flex-start;
 }
 
 .space-between{

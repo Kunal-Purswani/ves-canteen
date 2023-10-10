@@ -1,265 +1,32 @@
-var newMenu = [
-    {
-        "sys": { "id": "1" },
-        "fields": {
-            "title": "Double Cheese Potato Burger",
-            "category": "Burger",
-            "price": "45",
-            "caleories": "220 - 280 Kcal",
-            "image": { "fields": { "file": { "url": "assets/images/burger.jpg" } } }
+var newMenu = []
+
+// const firebaseConfig = {
+//     apiKey: "AIzaSyDlLRr6lUEb8oiloSQEeaVRyLt-mGlOczk",
+//     authDomain: "canteen-92c5d.firebaseapp.com",
+//     projectId: "canteen-92c5d",
+//     storageBucket: "canteen-92c5d.appspot.com",
+//     messagingSenderId: "509738093409",
+//     appId: "1:509738093409:web:00c929ad924b9df3e2d320",
+//     measurementId: "G-FR6Z2GC1LZ",
+//     databaseURL:"https://canteen-92c5d-default-rtdb.asia-southeast1.firebasedatabase.app"
+//   };
+  
+//   // Initialize Firebase
+//   firebase.initializeApp(firebaseConfig); 
+
+firebase.database()
+    .ref('Menu')
+    .on('value',(snapshot)=>{
+        if(snapshot.exists()){
+            newMenu = snapshot.val()
+                displayMenuItems(newMenu);
+                showUserCart(addItem)
+                const addToCartBtn = document.querySelectorAll('#add-to-cart-btn');
+                // Menu Filtering items
+                filtering(addToCartBtn)
+                ClientDataFlow(addToCartBtn)
         }
-    },
-    {
-        "sys": { "id": "2" },
-        "fields": {
-            "title": "Cheese Sandwitch",
-            "category": "Sandwitch",
-            "price": "45",
-            "caleories": "250 - 300 Kcal",
-            "image": { "fields": { "file": { "url": "assets/images/sandwich1.jpg" } } }
-        }
-    },
-    {
-        "sys": { "id": "3" },
-        "fields": {
-            "title": "Veg Club Sandwitch",
-            "category": "Sandwitch",
-            "price": "60",
-            "caleories": "320 - 400 Kcal",
-            "image": { "fields": { "file": { "url": "assets/images/s2.jpg" } } }
-        }
-    },
-    {
-        "sys": { "id": "4" },
-        "fields": {
-            "title": "Cheese Masala Sandwitch",
-            "category": "Sandwitch",
-            "price": "45",
-            "caleories": "250 - 300 Kcal",
-            "image": { "fields": { "file": { "url": "assets/images/sandwich2.jpg" } } }
-        }
-    },
-    {
-        "sys": { "id": "5" },
-        "fields": {
-            "title": "Veg Schezuan Sandwitch",
-            "category": "Sandwitch",
-            "price": "45",
-            "caleories": "230 - 285 Kcal",
-            "image": { "fields": { "file": { "url": "assets/images/schez-sandwitch.jpg" } } }
-        }
-    },
-    {
-        "sys": { "id": "6" },
-        "fields": {
-            "title": "Masala Maggie",
-            "category": "Maggie",
-            "price": "25",
-            "caleories": "150 - 280 Kcal",
-            "image": { "fields": { "file": { "url": "assets/images/maggie.jpg" } } }
-        }
-    },
-    {
-        "sys": { "id": "7" },
-        "fields": {
-            "title": "Schezuan Maggie",
-            "category": "Maggie",
-            "price": "30",
-            "caleories": "165 - 225 Kcal",
-            "image": { "fields": { "file": { "url": "assets/images/maggie-s.jpg" } } }
-        }
-    },
-    {
-        "sys": { "id": "8" },
-        "fields": {
-            "title": "Veg Maggie",
-            "category": "Maggie",
-            "price": "30",
-            "caleories": "170 - 220 Kcal",
-            "image": { "fields": { "file": { "url": "assets/images/veg-maggie.jpg" } } }
-        }
-    },
-    {
-        "sys": { "id": "9" },
-        "fields": {
-            "title": "Cheese Garlic Maggie",
-            "category": "Maggie",
-            "price": "40",
-            "caleories": "190 - 230 Kcal",
-            "image": { "fields": { "file": { "url": "assets/images/garlic-maggie.jpg" } } }
-        }
-    },
-    {
-        "sys": { "id": "10" },
-        "fields": {
-            "title": "Cheese Veg Maggie",
-            "category": "Maggie",
-            "price": "45",
-            "caleories": "175 - 235 Kcal",
-            "image": { "fields": { "file": { "url": "assets/images/cheese-maggie.jpg" } } }
-        }
-    },
-    {
-        "sys": { "id": "11" },
-        "fields": {
-            "title": "Masala Fries",
-            "category": "Fries",
-            "price": "35",
-            "caleories": "120 - 185 Kcal",
-            "image": { "fields": { "file": { "url": "assets/images/frenchfries.jpg" } } }
-        }
-    },
-    {
-        "sys": { "id": "12" },
-        "fields": {
-            "title": "Schezuan Fries",
-            "category": "Fries",
-            "price": "45",
-            "caleories": "135 - 210 Kcal",
-            "image": { "fields": { "file": { "url": "assets/images/shezuan.jpg" } } }
-        }
-    },
-    {
-        "sys": { "id": "13" },
-        "fields": {
-            "title": "Cheese Fries",
-            "category": "Fries",
-            "price": "40",
-            "caleories": "140 - 156 Kcal",
-            "image": { "fields": { "file": { "url": "assets/images/cheese-fries.jpg" } } }
-        }
-    },
-    {
-        "sys": { "id": "14" },
-        "fields": {
-            "title": "Red Sause Pasta",
-            "category": "Pasta",
-            "price": "80",
-            "caleories": "241 - 321 Kcal",
-            "image": { "fields": { "file": { "url": "assets/images/pasta.jpg" } } }
-        }
-    },
-    {
-        "sys": { "id": "15" },
-        "fields": {
-            "title": "White Sause Pasta",
-            "category": "Pasta",
-            "price": "80",
-            "caleories": "265 - 321 Kcal",
-            "image": { "fields": { "file": { "url": "assets/images/white-pasta.jpg" } } }
-        }
-    },
-    {
-        "sys": { "id": "16" },
-        "fields": {
-            "title": "Milk Shakes",
-            "category": "Beverages",
-            "price": "35",
-            "caleories": "155 - 210 Kcal",
-            "image": { "fields": { "file": { "url": "assets/images/milk-shake.jpg" } } }
-        }
-    },
-    {
-        "sys": { "id": "17" },
-        "fields": {
-            "title": "Hot Chocolate",
-            "category": "Beverages",
-            "price": "35",
-            "caleories": "230 - 280 Kcal",
-            "image": { "fields": { "file": { "url": "assets/images/hot-coffee.jpg" } } }
-        }
-    },
-    {
-        "sys": { "id": "18" },
-        "fields": {
-            "title": "Aerated Drinks",
-            "category": "Beverages",
-            "price": "10",
-            "caleories": "260 - 365 Kcal",
-            "image": { "fields": { "file": { "url": "assets/images/Aerated-Drinks.jpg" } } }
-        }
-    },
-    {
-        "sys": { "id": "19" },
-        "fields": {
-            "title": "Cold Coffee",
-            "category": "Beverages",
-            "price": "35",
-            "caleories": "255 - 360 Kcal",
-            "image": { "fields": { "file": { "url": "assets/images/cold-coffee.jpg" } } }
-        }
-    },
-    {
-        "sys": { "id": "20" },
-        "fields": {
-            "title": "Coffee",
-            "category": "Beverages",
-            "price": "15",
-            "caleories": "220 - 265 Kcal",
-            "image": { "fields": { "file": { "url": "assets/images/coffee.jpg" } } }
-        }
-    },
-    {
-        "sys": { "id": "21" },
-        "fields": {
-            "title": "Tea",
-            "category": "Beverages",
-            "price": "10",
-            "caleories": "155 - 225 Kcal",
-            "image": { "fields": { "file": { "url": "assets/images/tea.jpg" } } }
-        }
-    },
-    {
-        "sys": { "id": "22" },
-        "fields": {
-            "title": "Chocate Frappe",
-            "category": "Beverages",
-            "price": "35",
-            "caleories": "265 - 355 Kcal",
-            "image": { "fields": { "file": { "url": "assets/images/beverage.jpg" } } }
-        }
-    },
-    {
-        "sys": { "id": "23" },
-        "fields": {
-            "title": "Veg Puff",
-            "category": "Bakery",
-            "price": "35",
-            "caleories": "260 - 320 Kcal",
-            "image": { "fields": { "file": { "url": "assets/images/puff.jpg" } } }
-        }
-    },
-    {
-        "sys": { "id": "24" },
-        "fields": {
-            "title": "Panner Puff",
-            "category": "Bakery",
-            "price": "15",
-            "caleories": "255 - 390 Kcal",
-            "image": { "fields": { "file": { "url": "assets/images/samosa.jpg" } } }
-        }
-    },
-    {
-        "sys": { "id": "25" },
-        "fields": {
-            "title": "Khari",
-            "category": "Bakery",
-            "price": "20",
-            "caleories": "265 - 375 Kcal",
-            "image": { "fields": { "file": { "url": "assets/images/panner-puff.jpg" } } }
-        }
-    },
-    {
-        "sys": { "id": "26" },
-        "fields": {
-            "title": "Noodle Puff",
-            "category": "Bakery",
-            "price": "15",
-            "caleories": "300 - 425 Kcal",
-            "image": { "fields": { "file": { "url": "assets/images/noodle-puff.jpg" } } }
-        }
-    }
-]
+    })
 
 // Menu Section -
 const menuSection = document.querySelector('.menu-section');
@@ -282,6 +49,7 @@ function filtering(addToCartBtn) {
             addToCartBtn.forEach(item => {
                 let id = item.dataset.id;
                 let menuItemClass = item.parentElement.parentElement.parentElement.parentElement
+                console.log(newMenu)
                 if (Category === newMenu[id - 1].fields.category) {
                     menuItemClass.classList.remove('display-none')
                     menuItemClass.classList.add('show')
@@ -437,7 +205,7 @@ function cartFunctionalities(addItem, trimedEmailID, addToCartBtn) {
             addItem.forEach(item => {
                 if (item.FoodID === id) {
                     addItem.splice(addItem.indexOf(item), 1)
-                    if (window.location != 'https://kunal-purswani/ves_canteen/user-orders.html') {
+                    if (window.location != 'http://127.0.0.1:5502/user-orders.html') {
                         // Enable removed items btn
                         addToCartBtn[item.FoodID - 1].disabled = false;
                         addToCartBtn[item.FoodID - 1].innerHTML = 'Add to Cart';
@@ -494,7 +262,7 @@ function cartFunctionalities(addItem, trimedEmailID, addToCartBtn) {
                 if (item.FoodID === id && item.Quantity >= 1) {
                     item.Quantity -= 1;
                     if (item.Quantity === 0) {
-                        if (window.location != 'https://kunal-purswani/ves_canteen/user-orders.html') {
+                        if (window.location != 'http://127.0.0.1:5502/user-orders.html') {
                             // Enable Buttons - so user can use them again
                             // Enable removed items btn
                             addToCartBtn[item.FoodID - 1].disabled = false;
@@ -530,7 +298,7 @@ function clearUserCart(addItem, addToCartBtn, trimedEmailID) {
     cartItemsContainer.innerHTML = '';
     cartValues.forEach(values => { values.innerHTML = '0'; })
     cartTotal.innerHTML = '0';
-    if (window.location != 'https://kunal-purswani/ves_canteen/user-orders.html') {
+    if (window.location != 'http://127.0.0.1:5502/user-orders.html') {
         // Enable removed items btn
         addItem.forEach(item => {
             addToCartBtn[item.FoodID - 1].disabled = false;
@@ -577,15 +345,7 @@ function userOrderManagement(trimedEmailID, userCart, userEmailID) {
 }
 
 // Main.js When Content Loaded
-document.addEventListener('DOMContentLoaded', () => {
-    // Client UI
-    displayMenuItems(newMenu);
-    showUserCart(addItem)
-    const addToCartBtn = document.querySelectorAll('#add-to-cart-btn');
-    // Menu Filtering items
-    filtering(addToCartBtn)
-    ClientDataFlow(addToCartBtn)
-});
+
 
 // When User Loggin and Do Stuff
 function ClientDataFlow(addToCartBtn) {
@@ -601,11 +361,11 @@ function ClientDataFlow(addToCartBtn) {
                         // Gets Data
                         var data = snapshot.val();
                         if (userEmailID == 'd2020.kunal.purswani@ves.ac.in') {
-                            window.location = 'https://kunal-purswani/ves_canteen/admin-side.html'
+                            window.location = 'http://127.0.0.1:5502/admin-side.html'
                         } else {
                             for(worker in data){
                                 if(data[worker].email==userEmailID && data[worker].role=='cook')
-                                window.location = 'https://kunal-purswani/ves_canteen/cook-side.html'
+                                window.location = 'http://127.0.0.1:5502/cook-side.html'
                             }
                         }
                     }
@@ -623,7 +383,7 @@ function ClientDataFlow(addToCartBtn) {
                                 // Store previouly added items to array -
                                 addItem.push(userCart[i])
                                 // Disable already added items
-                                if (window.location != 'https://kunal-purswani/ves_canteen/user-orders.html') {
+                                if (window.location != 'http://127.0.0.1:5502/user-orders.html') {
                                     addToCartBtn[userCart[i].FoodID - 1].disabled = true;
                                     addToCartBtn[userCart[i].FoodID - 1].innerHTML = 'In Cart';
                                 }
@@ -667,7 +427,7 @@ function ClientDataFlow(addToCartBtn) {
                         title: 'Order Successfully Recorded',
                     });
                     window.setTimeout(function () {
-                        window.location.replace('https://kunal-purswani/ves_canteen/user-orders.html')
+                        window.location.replace('http://127.0.0.1:5502/user-orders.html')
                     }, 2600)
                 } else {
                     Swal.fire({
@@ -678,7 +438,7 @@ function ClientDataFlow(addToCartBtn) {
             })
 
             // Shows Orders
-            if (window.location.href === 'https://kunal-purswani/ves_canteen/user-orders.html') {
+            if (window.location.href === 'http://127.0.0.1:5502/user-orders.html') {
                 setOrderDetails(trimedEmailID)
             }
         } else {

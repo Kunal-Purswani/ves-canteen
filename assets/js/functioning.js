@@ -12,7 +12,8 @@
   };
   
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);  
+  firebase.initializeApp(firebaseConfig); 
+
   
   // SignUp Form ID's -
   const myForm = document.getElementById("main-form");
@@ -104,7 +105,7 @@
 
     static authRedirecting() {
       window.setTimeout(() => {
-        window.location.replace('https://kunal-purswani/ves_canteen/client-side.html');
+        window.location.replace('http://127.0.0.1:5502/client-side.html');
       }, 500)
     }
 
@@ -121,7 +122,7 @@
     firebaseAuthRedirect(){
       firebase.auth().onAuthStateChanged(function(user) {
         // If user is registered -
-        user ?  window.location.replace('https://kunal-purswani/ves_canteen/client-side.html') : console.log('none');
+        user ?  window.location.replace('http://127.0.0.1:5502/client-side.html') : console.log('none');
       });
     }
   }
@@ -226,13 +227,14 @@
     if (logout){
       logout.forEach(btn => {
         btn.addEventListener('click', (e) => {
+          console.log(e.target)
           e.preventDefault();
           Swal.fire({
             icon: 'success',
             title: 'Logged Out Successfully',
           })
           firebase.auth().signOut().then(() => {
-            window.location.replace("https://kunal-purswani/ves_canteen/")
+            window.location.replace("http://127.0.0.1:5502")
           });
         });
       })
@@ -250,3 +252,15 @@ function makeUserDataID(userEmailID){
   }
   return userDataID
 }
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (!user) {
+    if(window.location.pathname != '/' && window.location.pathname!='/index.html'){
+      window.location.replace('http://127.0.0.1:5502')
+    }
+  }else{
+    if(window.location.pathname == '/' || window.location.pathname=='/index.html'){
+      window.location.replace('http://127.0.0.1:5502/client-side.html')
+    }
+  }
+});
