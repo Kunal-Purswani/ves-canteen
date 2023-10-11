@@ -909,7 +909,7 @@ tr {
   padding: 25px;
 }
 
-.add-product input, .add-staff-text-field{
+.add-product input, .add-staff-text-field, .text-field{
   border: none;
   outline: none;
   padding-bottom: 5px;

@@ -14,6 +14,28 @@ firebase.database()
         }
     })
 
+
+let currentValue = true
+
+const radioBtns = document.querySelectorAll('input[type="radio"]')
+
+const labDiv = document.querySelector('.lab-div')
+
+const labNo = document.querySelector('.lab-no')
+
+radioBtns.forEach(radioBtn => {
+    radioBtn.addEventListener('click', (e) => {
+        if (e.target.value == 'no') {
+            labDiv.classList.add('show')
+            labDiv.classList.remove('hide-stuff')
+        } else {
+            labDiv.classList.add('hide-stuff')
+            labDiv.classList.remove('show')
+        }
+        currentValue=!currentValue
+    })
+})
+
 // Menu Section -
 const menuSection = document.querySelector('.menu-section');
 // Menu Filter Buttons -
@@ -191,7 +213,7 @@ function cartFunctionalities(addItem, trimedEmailID, addToCartBtn) {
             addItem.forEach(item => {
                 if (item.FoodID === id) {
                     addItem.splice(addItem.indexOf(item), 1)
-                    if (window.location != 'http://127.0.0.1:5502/user-orders.html') {
+                    if (window.location != 'http://127.0.0.1:5502/staff-orders.html') {
                         // Enable removed items btn
                         addToCartBtn[item.FoodID - 1].disabled = false;
                         addToCartBtn[item.FoodID - 1].innerHTML = 'Add to Cart';
@@ -248,7 +270,7 @@ function cartFunctionalities(addItem, trimedEmailID, addToCartBtn) {
                 if (item.FoodID === id && item.Quantity >= 1) {
                     item.Quantity -= 1;
                     if (item.Quantity === 0) {
-                        if (window.location != 'http://127.0.0.1:5502/user-orders.html') {
+                        if (window.location != 'http://127.0.0.1:5502/staff-orders.html') {
                             // Enable Buttons - so user can use them again
                             // Enable removed items btn
                             addToCartBtn[item.FoodID - 1].disabled = false;
@@ -284,7 +306,7 @@ function clearUserCart(addItem, addToCartBtn, trimedEmailID) {
     cartItemsContainer.innerHTML = '';
     cartValues.forEach(values => { values.innerHTML = '0'; })
     cartTotal.innerHTML = '0';
-    if (window.location != 'http://127.0.0.1:5502/user-orders.html') {
+    if (window.location != 'http://127.0.0.1:5502/staff-orders.html') {
         // Enable removed items btn
         addItem.forEach(item => {
             addToCartBtn[item.FoodID - 1].disabled = false;
@@ -308,7 +330,7 @@ function userOrderManagement(trimedEmailID, userCart, userEmailID) {
     const orderDate = new Date().toLocaleDateString();
     var orderTime = new Date().toLocaleTimeString();
     // To check AM or PM
-    var hours = new Date().getHours();
+    // var hours = new Date().getHours();
     // Check AM or PM
     // if ( hours >= 12){ orderTime = orderTime + ' PM' }
     // else { orderTime = orderTime + ' AM' }
@@ -322,6 +344,14 @@ function userOrderManagement(trimedEmailID, userCart, userEmailID) {
         Delivery_Status: false,
         Order_Date: orderDate,
         Order_Time: orderTime,
+        Eat_At_Canteen: currentValue
+    }
+
+    if(!currentValue){
+        current_order = {
+            ...current_order,
+            Lab_No: labNo.value
+        }
     }
 
     // Add Current Order To User Orders list 
@@ -340,6 +370,7 @@ function ClientDataFlow(addToCartBtn) {
         if (user) {
             const userEmailID = user.email
             var trimedEmailID = makeUserDataID(userEmailID);
+            // Get Cart Items already stored
             if (userEmailID == 'd2020.kunal.purswani@ves.ac.in') {
                 window.location = 'http://127.0.0.1:5502/admin-side.html'
             } else {
@@ -355,8 +386,8 @@ function ClientDataFlow(addToCartBtn) {
                             }
                         }
                     })
-                
-                if(window.location.href != 'http://127.0.0.1:5502/staff-side.html'){
+
+                if (window.location.href != 'http://127.0.0.1:5502/staff-side.html') {
                     firebase.database()
                         .ref('Staff/')
                         .on('value', function (snapshot) {
@@ -371,8 +402,6 @@ function ClientDataFlow(addToCartBtn) {
                         })
                 }
             }
-
-            // Get Cart Items already stored
             firebase.database()
                 .ref('Users_Carts/' + trimedEmailID + '_Cart')
                 .on('value', function (snapshot) {
@@ -384,7 +413,7 @@ function ClientDataFlow(addToCartBtn) {
                             // Store previouly added items to array -
                             addItem.push(userCart[i])
                             // Disable already added items
-                            if (window.location != 'http://127.0.0.1:5502/user-orders.html') {
+                            if (window.location != 'http://127.0.0.1:5502/staff-orders.html') {
                                 addToCartBtn[userCart[i].FoodID - 1].disabled = true;
                                 addToCartBtn[userCart[i].FoodID - 1].innerHTML = 'In Cart';
                             }
@@ -428,7 +457,7 @@ function ClientDataFlow(addToCartBtn) {
                         title: 'Order Successfully Recorded',
                     });
                     window.setTimeout(function () {
-                        window.location.replace('http://127.0.0.1:5502/user-orders.html')
+                        window.location.replace('http://127.0.0.1:5502/staff-orders.html')
                     }, 2600)
                 } else {
                     Swal.fire({
@@ -439,7 +468,7 @@ function ClientDataFlow(addToCartBtn) {
             })
 
             // Shows Orders
-            if (window.location.href === 'http://127.0.0.1:5502/user-orders.html') {
+            if (window.location.href === 'http://127.0.0.1:5502/staff-orders.html') {
                 setOrderDetails(trimedEmailID)
             }
         } else {

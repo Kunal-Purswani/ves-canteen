@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VES Canteen | Menu</title>
-    
+    <title>VES Canteen | Orders Status</title>
+
     <!-- Page Icon -->
     <link rel="Micosoft icon" href="https://vesit.ves.ac.in/logo.png">
-    
+
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" 
-          integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" 
-          crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
 
     <!-- Style Sheets -->
     <link rel="stylesheet" href="assets/css/style.css">
@@ -28,15 +29,18 @@
     <!-- Sweet Alert Pop Modal -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
+
 <body>
-    
+
     <!-- NavBar -->
     <header class="navbar">
         <div class="container flex text-center jc-ai-center">
             <!-- Left Navigation -->
             <div class="site-title flex align-item-center">
                 <div>
-                    <a href="client-side.html"><h1><span class="clr-red">VES</span> <span class="clr-green">Canteen</span></h1></a>
+                    <a href="client-side.html">
+                        <h1><span class="clr-red">VES</span> <span class="clr-green">Canteen</span></h1>
+                    </a>
                 </div>
                 <!-- Toggle Bars -->
                 <div class="toggle-bars mybar">
@@ -46,11 +50,11 @@
                 </div>
             </div>
             <!-- Right Navigation -->
-            <nav class="site-nav flex left-nav align-item-center">                
+            <nav class="site-nav flex left-nav align-item-center">
                 <ul class="flex">
                     <li><a href="client-side.html"><i class="fas fa-cocktail"></i> Menu</a></li>
                     <li><a href="user-orders.html"><i class="fas fa-coins"></i> Your Orders</a></li>
-                    <button  class="btn" id="userlogout">Log Out</button>
+                    <button class="btn" id="userlogout">Log Out</button>
                     <!-- Cart Icon -->
                     <a class="flex" id="cart-btn">
                         <i class="fas fa-shopping-cart"></i>
@@ -67,7 +71,7 @@
             <ul class="mob-ul">
                 <li><a href="client-side.html">Menu</a></li>
                 <li><a href="user-orders.html">My Orders</a></li>
-                <button  class="btn" id="userlogout">Log Out</button>
+                <button class="btn" id="userlogout">Log Out</button>
                 <!-- Cart Icon -->
                 <a class="flex" id="cart-btn">
                     <i class="fas fa-shopping-cart"></i>
@@ -84,8 +88,7 @@
             <header class="cart-title text-center md">
                 <div>Your Cart</div>
                 <div>
-                    <i class="fas fa-times" 
-                       onclick="cartOverlay.classList.remove('show');
+                    <i class="fas fa-times" onclick="cartOverlay.classList.remove('show');
                        cartInnerlay.classList.remove('showCart');">
                     </i>
                 </div>
@@ -93,10 +96,20 @@
             <!-- Cart Item Container -->
             <div class="cart-items-container py-2">
                 <!-- Cart Items added to cart -->
-   
             </div>
             <hr class="py-1">
             <!-- Footer Side  -->
+            <div class="ma-2">
+                <h1>Where do you wanna eat?</h1>
+                &nbsp;<input type="radio" id="html" name="place" value="yes" checked>
+                &nbsp;<label for="html">I'll have a meal at canteen</label><br>
+                &nbsp;<input type="radio" id="css" name="place" value="no">
+                &nbsp;<label for="css">Bring it to my table</label><br>
+                <div class="lab-div hide-stuff">
+                    <input type="text" style="padding: .4rem!important;" class="lab-no text-field" name="lab" id="lab"
+                        placeholder="Enter lab number">
+                </div>
+            </div>
             <div class="cart-footer text-center sm">
                 <div>Your Total : &#8377;<span class="cart-total sm">0</span></div>
                 <div class="my-1">
@@ -107,51 +120,54 @@
         </div>
     </section>
 
-    <!-- Menu Showcase -->
-    <!-- Hero -->
-    <section class="menu-hero">
-        <div class="banner">
-            <h1 class="banner-title lg">Our Menu</h1>
-            <button class="banner-btn btn">order now</button>
+    <!-- Client Orders -->
+    <section class="orders c-orders m-2">
+        <div class="order-inner container-min p-2">
+            <!-- heading -->
+            <main class="current-orders title" style="font-size: 1.7rem;">Current Orders</main>
+            <!-- Shows Current Orders -->
+            <div class="order-inner"></div>
         </div>
     </section>
 
-    <!-- Menu -->
-    <section class="menu" style="margin-bottom: 5rem;">
-        <main class="container grid grid-1">
-            <!-- Title -->
-           <div class="title text-center">
-               <h2 class="lg my-2">Filter By Category</h2>
-                <!-- Filter Buttons -->
-                <div class="btn-container grid grid-4">
-                    <button id="menu-filter" class="filter-btn btn current" type="button" data-id="all">All</button>
-                    <button id="menu-filter" class="filter-btn btn" type="button" data-id="Burger">Burger</button>
-                    <button id="menu-filter" class="filter-btn btn" type="button" data-id="Sandwitch">Sandwich</button>
-                    <button id="menu-filter" class="filter-btn btn" type="button" data-id="Fries">Fries</button>
-                    <button id="menu-filter" class="filter-btn btn fv" type="button" data-id="Maggie">Maggie</button>
-                    <button id="menu-filter" class="filter-btn btn" type="button" data-id="Beverages">Beverages</button>
-                    <button id="menu-filter" class="filter-btn btn" type="button" data-id="Pasta">Pasta</button>
-                </div>
-           </div>
-           <hr>
-           <!-- Menu Items -->
-           <div class="menu-section grid grid-3">
-               <!-- Menu Item -->
-           </div>
-       </main>
-   </section>
-   
+    <section class="orders p-orders">
+        <main class="previous-orders"></main>
+    </section>
+
     <!-- User Footer -->
     <footer class="customer-footer" id="user-footer" style="margin-top: 10rem;"><!-- Comes Through JS --></footer>
 
     <script src="assets/js/firebase-initialize.js"></script>
 
+    <!-- Page Animations -->
+    <script src="assets/js/animations.js"></script>
+    <!-- Menu & Admin Stuff -->
     <!-- Creative Features -->
     <script src="assets/js/features.js"></script>
     <!-- Controls User Stuff -->
-    <script src="assets/js/functioning.js"></script>
-    <!-- Menu & Admin Stuff -->
-    <script src="assets/js/main.js"></script>
-    
+    <!-- <script src="assets/js/functioning.js"></script> -->
+    <script src="assets/js/staff.js"></script>
+    <script src="assets/js/load-order.js"></script>
+
+    <script>
+        const logout = document.querySelectorAll('#userlogout');
+        if (logout) {
+            logout.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    console.log(e.target)
+                    e.preventDefault();
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Logged Out Successfully',
+                    })
+                    firebase.auth().signOut().then(() => {
+                        window.location.replace("http://127.0.0.1:5502")
+                    });
+                });
+            })
+        }
+    </script>
+
 </body>
+
 </html>
