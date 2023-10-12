@@ -1,18 +1,66 @@
-const dropDown = document.getElementById('food-items')
+const foodItems = document.getElementById('food-items')
+const removeBtn = document.getElementById('remove-btn')
+
+firebase.database()
+    .ref('Todays_Spl')
+    .on('value', (snapshot) => {
+        if (snapshot.exists()) {
+            let data = snapshot.val()
+            todaysSplFoodItems.value = data.value
+        } else {
+            todaysSplFoodItems.value = 'delete'
+        }
+    })
+
 firebase.database()
     .ref('Menu')
     .on('value', (snapshot) => {
         if (snapshot.exists()) {
             let data = snapshot.val()
             for (item in data) {
-                dropDown.innerHTML += '<option value="Menu/' + item + '">' + data[item].fields.title + '</option>'
+                foodItems.innerHTML += '<option value="Menu/' + item + '">' + data[item].fields.title + '</option>'
             }
         }
     })
-const removeBtn = document.getElementById('remove-btn')
+
 removeBtn.addEventListener('click', (e) => {
-    firebase.database().ref(dropDown.value).remove()
+    firebase.database().ref(foodItems.value).remove()
 })
+
+firebase.database()
+    .ref('Menu')
+    .on('value', (snapshot) => {
+        if (snapshot.exists()) {
+            let data = snapshot.val()
+            for (item in data) {
+                todaysSplFoodItems.innerHTML += '<option value="Menu/' + item + '">' + data[item].fields.title + '</option>'
+            }
+        }
+    })
+
+const setBtn = document.getElementById('todays-spl-btn')
+setBtn.addEventListener('click', (e) => {
+    if (todaysSplFoodItems.value == 'delete') {
+        firebase.database().ref('Todays_Spl').remove()
+    } else {
+        firebase.database()
+            .ref(todaysSplFoodItems.value)
+            .on('value', (snapshot) => {
+                let data = snapshot.val()
+                firebase.database()
+                    .ref('Todays_Spl')
+                    .set({
+                        ...data,
+                        value: todaysSplFoodItems.value,
+                    })
+            })
+    }
+    Swal.fire({
+        icon: 'success',
+        title: 'Today\'s Special Set',
+    })
+})
+
 // for(i=26;i<=1012;i++)
 //   firebase.database().ref('Menu/'+i).remove()
 const title = document.getElementById('add-title');

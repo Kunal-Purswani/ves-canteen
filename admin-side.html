@@ -94,6 +94,9 @@
         <button class="btn p-1" id="remove-product-menu">
           Remove a Product from Menu
         </button>
+        <button class="btn p-1" id="todays-spl">
+          Today's Special
+        </button>
       </article>
     </div>
   </section>
@@ -154,7 +157,56 @@
     </div>
   </section>
 
+  <section class="add-product remove todays-spl-container">
+    <div class="container-min grid">
+      <div class="title md text-center">Set Today's Special</div>
+      <hr />
+      <!-- Add Menu Item -->
+      <article class="menu-item text-center">
+        <img src="assets/images/sandwich1.jpg" alt="Product image" />
+
+        <div class="item-info">
+          <figure>
+            <select name="food-items" id="todays-spl-food-items">
+              <!-- Comes from Firebase Database -->
+              <option value="delete">None</option>
+            </select>
+          </figure>
+          <div class="my-1 text-center">
+            <button class="btn" id="todays-spl-btn">Save</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
   <script src="assets/js/firebase-initialize.js"></script>
+  <script>
+    const todaysSplFoodItems = document.getElementById('todays-spl-food-items');
+
+    firebase.database()
+      .ref('Menu')
+      .on('value', (snapshot) => {
+        if (snapshot.exists()) {
+          let data = snapshot.val()
+          for (item in data) {
+            todaysSplFoodItems.innerHTML += '<option value="Menu/' + item + '">' + data[item].fields.title + '</option>'
+          }
+        }
+      })
+
+    firebase.database()
+      .ref('Todays_Spl')
+      .on('value', (snapshot) => {
+        if (snapshot.exists()) {
+          let data = snapshot.val()
+          todaysSplFoodItems.value = data.value
+        } else {
+          todaysSplFoodItems.value = 'delete'
+        }
+      })
+  </script>
+
   <!-- Controls User Stuff -->
   <script src="assets/js/admin.js"></script>
   <!-- Page Animations -->

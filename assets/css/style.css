@@ -896,6 +896,10 @@ tr {
   display: none;
 }
 
+.todays-spl-container{
+  display: none;
+}
+
 .show-container {
   display: block;
 }
