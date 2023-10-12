@@ -60,7 +60,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
+                    <tr class="order-${i}">
                     <td data-label= "Order ID">${trimedID}</td>
                     <td data-label= "Total">&#8377; ${total}</td>
                     <td data-label= "Date">${date}</td>

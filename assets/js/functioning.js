@@ -47,12 +47,12 @@
     // Google SignUp Method -
     googleSignUpIn(){
       var provider = new firebase.auth.GoogleAuthProvider();
-      console.log(provider)
+      // console.log(provider)
       firebase
         .auth()
         .signInWithPopup(provider)
         .then((result) => {
-          console.log(result.email);
+          // console.log(result.email);
           this.notifyUser();
           this.firebaseAuthRedirect();
         })
@@ -118,7 +118,7 @@
     builtInSignIn(){
     const email =  document.getElementById('sign-in-email').value;
     const password = document.getElementById('sign-in-password').value;
-    console.log('called');
+    // console.log('called');
 
     firebase.auth().signInWithEmailAndPassword(email, password)
     .then(userCredential => {
@@ -143,7 +143,7 @@
     static UserfirebaseDatabase(userName, email, password, phoneNumber) {
       const userID = makeUserDataID(email);     
       // Create User data in firebase -
-      console.log('database called');
+      // console.log('database called');
       firebase.database().ref('User_Data/' + userID).set({
         User_Name: userName,
         Email: email,
@@ -213,7 +213,7 @@
     if (logout){
       logout.forEach(btn => {
         btn.addEventListener('click', (e) => {
-          console.log(e.target)
+          // console.log(e.target)
           e.preventDefault();
           Swal.fire({
             icon: 'success',

@@ -32,7 +32,7 @@ radioBtns.forEach(radioBtn => {
             labDiv.classList.add('hide-stuff')
             labDiv.classList.remove('show')
         }
-        currentValue=!currentValue
+        currentValue = !currentValue
     })
 })
 
@@ -327,7 +327,23 @@ function clearUserCart(addItem, addToCartBtn, trimedEmailID) {
 // User Order's Management -
 function userOrderManagement(trimedEmailID, userCart, userEmailID) {
 
-    const orderDate = new Date().toLocaleDateString();
+    let today = new Date();
+    console.log(today);
+
+    let dd = today.getDate();
+    let mm = today.getMonth() + 1;
+
+    let yyyy = today.getFullYear();
+
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+    today = dd + '/' + mm + '/' + yyyy;
+
+    const orderDate = today;
     var orderTime = new Date().toLocaleTimeString();
     // To check AM or PM
     // var hours = new Date().getHours();
@@ -344,13 +360,15 @@ function userOrderManagement(trimedEmailID, userCart, userEmailID) {
         Delivery_Status: false,
         Order_Date: orderDate,
         Order_Time: orderTime,
-        Eat_At_Canteen: currentValue
+        Eat_At_Canteen: currentValue,
     }
 
-    if(!currentValue){
+
+    if (!currentValue) {
         current_order = {
             ...current_order,
-            Lab_No: labNo.value
+            Lab_No: labNo.value,
+            Done_Eating: false,
         }
     }
 

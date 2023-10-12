@@ -35,7 +35,7 @@ firebase.auth().onAuthStateChanged((user) => {
                             text += '<tr>'
                             text += '<td>' + ++i + '</td>'
                             for (detail in data[users][order]) {
-                                if (detail == 'User_Cart' || detail == 'Order_Status' || detail == 'Payment_Status' || detail == 'Cooking_Status' || detail == 'Delivery_Status' || detail == 'Eat_At_Canteen' || detail == 'Lab_No')
+                                if (detail == 'User_Cart' || detail == 'Order_Status' || detail == 'Payment_Status' || detail == 'Cooking_Status' || detail == 'Delivery_Status' || detail == 'Eat_At_Canteen' || detail == 'Lab_No' || detail == 'Done_Eating')
                                     continue
                                 else
                                     text += '<td>' + data[users][order][detail] + '</td>'

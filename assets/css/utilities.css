@@ -39,7 +39,11 @@
 }
 
 .mat-2{
-    margin-top: 2rem!important;
+    margin-top: 2rem;
+}
+
+.mab-2{
+    margin-bottom: 2rem;
 }
 
 .ma-2{

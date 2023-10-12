@@ -43,9 +43,14 @@ body {
 }
 
 .index-image{
-  height: 300px;
+  margin: 0!important;
+  height: 80%;
   width: 300px;
   object-fit: contain;
+}
+
+.div-index-image{
+  height: 400px;
 }
 
 /* Scroll Bar */
@@ -978,4 +983,33 @@ button:disabled {
 .ord-details:hover{
   color:#fff;
   text-decoration: none;
+}
+
+@media only screen and (max-width: 767px) {
+  /* CSS for mobile devices */
+  .index-image {
+    /* Example styles for mobile devices */
+    margin: 0!important;
+    height: 70%!important;
+    width: 120px!important;
+  }
+
+  .div-index-image{
+    height: 300px;
+    margin: -50px 0 4rem 0!important;
+  }
+
+  .clg-img{
+    margin-top: .8rem!important;
+  }
+
+  .mab-2{
+    margin-bottom: .8rem!important;
+  }
+
+  /* Add other styles specific to mobile devices here */
+}
+
+.justified-text {
+  text-align: justify;
 }

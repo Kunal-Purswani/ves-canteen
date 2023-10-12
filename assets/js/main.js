@@ -305,7 +305,23 @@ function clearUserCart(addItem, addToCartBtn, trimedEmailID) {
 // User Order's Management -
 function userOrderManagement(trimedEmailID, userCart, userEmailID) {
 
-    const orderDate = new Date().toLocaleDateString();
+    let today = new Date();
+    console.log(today);
+
+    let dd = today.getDate();
+    let mm = today.getMonth() + 1;
+
+    let yyyy = today.getFullYear();
+
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+    today = dd + '/' + mm + '/' + yyyy;
+
+    const orderDate = today;
     var orderTime = new Date().toLocaleTimeString();
     // To check AM or PM
     var hours = new Date().getHours();
@@ -352,11 +368,13 @@ function ClientDataFlow(addToCartBtn) {
                             for (worker in data) {
                                 if (data[worker].email == userEmailID && data[worker].role == 'cook')
                                     window.location.replace('http://127.0.0.1:5502/cook-side.html')
+                                if (data[worker].email == userEmailID && data[worker].role == 'cleaner')
+                                    window.location.replace('http://127.0.0.1:5502/cleaner-side.html')
                             }
                         }
                     })
-                
-                if(window.location.href != 'http://127.0.0.1:5502/staff-side.html'){
+
+                if (window.location.href != 'http://127.0.0.1:5502/staff-side.html') {
                     firebase.database()
                         .ref('Staff/')
                         .on('value', function (snapshot) {
