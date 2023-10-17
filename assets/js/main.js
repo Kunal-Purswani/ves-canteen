@@ -56,7 +56,7 @@ function filtering(addToCartBtn) {
 function displayMenuItems(menuItems) {
     let displayMenu = menuItems.map(function (item) {
         return `
-        <article class="menu-item">
+        <article class="menu-item" id=${item.sys.id}>
             <img src="${item.fields.image.fields.file.url}" loading="lazy" alt="Product image">
             <div class="item-info">
             <figure>

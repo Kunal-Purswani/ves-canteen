@@ -167,7 +167,19 @@
 
         <div class="item-info">
           <figure>
-            <select name="food-items" id="todays-spl-food-items">
+            <select name="food-items" id="todays-spl-food-items-1">
+              <!-- Comes from Firebase Database -->
+              <option value="delete">None</option>
+            </select>
+          </figure>
+          <figure>
+            <select name="food-items" class="my-1" id="todays-spl-food-items-2">
+              <!-- Comes from Firebase Database -->
+              <option value="delete">None</option>
+            </select>
+          </figure>
+          <figure>
+            <select name="food-items" id="todays-spl-food-items-3">
               <!-- Comes from Firebase Database -->
               <option value="delete">None</option>
             </select>
@@ -182,7 +194,9 @@
 
   <script src="assets/js/firebase-initialize.js"></script>
   <script>
-    const todaysSplFoodItems = document.getElementById('todays-spl-food-items');
+    const todaysSplFoodItems1 = document.getElementById('todays-spl-food-items-1');
+    const todaysSplFoodItems2 = document.getElementById('todays-spl-food-items-2');
+    const todaysSplFoodItems3 = document.getElementById('todays-spl-food-items-3');
 
     firebase.database()
       .ref('Menu')
@@ -190,19 +204,63 @@
         if (snapshot.exists()) {
           let data = snapshot.val()
           for (item in data) {
-            todaysSplFoodItems.innerHTML += '<option value="Menu/' + item + '">' + data[item].fields.title + '</option>'
+            todaysSplFoodItems1.innerHTML += '<option value="Menu/' + item + '">' + data[item].fields.title + '</option>'
           }
         }
       })
 
     firebase.database()
-      .ref('Todays_Spl')
+      .ref('Menu')
       .on('value', (snapshot) => {
         if (snapshot.exists()) {
           let data = snapshot.val()
-          todaysSplFoodItems.value = data.value
+          for (item in data) {
+            todaysSplFoodItems2.innerHTML += '<option value="Menu/' + item + '">' + data[item].fields.title + '</option>'
+          }
+        }
+      })
+
+    firebase.database()
+      .ref('Menu')
+      .on('value', (snapshot) => {
+        if (snapshot.exists()) {
+          let data = snapshot.val()
+          for (item in data) {
+            todaysSplFoodItems3.innerHTML += '<option value="Menu/' + item + '">' + data[item].fields.title + '</option>'
+          }
+        }
+      })
+
+      firebase.database()
+      .ref('Todays_Spl/1')
+      .on('value', (snapshot) => {
+        if (snapshot.exists()) {
+          let data = snapshot.val()
+          todaysSplFoodItems1.value = data.value
         } else {
-          todaysSplFoodItems.value = 'delete'
+          todaysSplFoodItems1.value = 'delete'
+        }
+      })
+
+      firebase.database()
+      .ref('Todays_Spl/2')
+      .on('value', (snapshot) => {
+        if (snapshot.exists()) {
+          let data = snapshot.val()
+          todaysSplFoodItems2.value = data.value
+        } else {
+          todaysSplFoodItems2.value = 'delete'
+        }
+      })
+
+      firebase.database()
+      .ref('Todays_Spl/3')
+      .on('value', (snapshot) => {
+        if (snapshot.exists()) {
+          let data = snapshot.val()
+          todaysSplFoodItems3.value = data.value
+        } else {
+          todaysSplFoodItems3.value = 'delete'
         }
       })
   </script>

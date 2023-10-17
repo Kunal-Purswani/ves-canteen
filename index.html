@@ -15,11 +15,17 @@
         integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
         crossorigin="anonymous" />
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
     <!-- Style Sheets -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/utilities.css">
     <link rel="stylesheet" href="assets/css/mobile.css">
     <link rel="stylesheet" href="assets/css/animations.css">
+
 
     <!-- Firebase Connectivity Using CDN -->
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
@@ -52,8 +58,27 @@
             loading="lazy" alt="Home Page Image">
     </section>
 
-    <div id="sign-modal" class="todays-spl-display">
+    <div id="sign-modal">
         <!-- Comes from JS -->
+        <section class="hero my-2 hide-stuff todays-spl-section" style="width: 80%;">
+            <main class="container-min flex-column jc-ai-center" style="width: 100%!important;">
+                <h1 class="lg text-center" style="font-weight: 600;color: rgba(0, 0, 0, 0.767);">Today's Special</h1>
+                <h4 class="justified-text">Order our today's Special Food!</h4>
+                <div id="carouselExampleSlidesOnly" class="carousel slide w-100" data-bs-ride="carousel">
+                    <div class="carousel-inner" id="todays-spl">
+                        <div class="carousel-item spl-1 active">
+
+                        </div>
+                        <div class="carousel-item spl-2">
+
+                        </div>
+                        <div class="carousel-item spl-3">
+
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </section>
     </div>
 
     <!-- Hero Section -->
@@ -148,35 +173,7 @@
     <!-- Page Animations -->
     <script src="assets/js/animations.js"></script>
 
-    <script>
-        const displayDiv = document.querySelector('.todays-spl-display')
-        firebase.database()
-            .ref('Todays_Spl')
-            .on('value', (snapshot) => {
-                if (snapshot.exists()) {
-                    let data = snapshot.val()
-                    displayDiv.innerHTML = `
-                    <section class="hero my-2" style="width: 50%;">
-            <main class="container-min flex-column jc-ai-center">
-                <h1 class="lg text-center" style="font-weight: 600;color: rgba(0, 0, 0, 0.767);">Today's Special</h1>
-                <h4 class="justified-text">Order our today's Special Food!</h3>
-                <article class="flex space-between" style="width: 100%;">
-                    <div class="div-index-image flex jc-ai-center">
-                        <img class="index-image" src="${data.fields.image.fields.file.url}" loading="lazy"
-                            alt="Today's Special">
-                    </div>
-                    <div class="my-2 flex-column">
-                        <h1 style="font-size: 38px;" class="todays-spl-title mat-2">${data.fields.title}</h1>
-                        <h4 style="font-size: 24px;" class="mat-2 mab-2">Only For &#8377; ${data.fields.price}</h4>
-                        <button id="sign-modal" class="my-1 btn btn-primary" style="font-size: 20px;">Order Now</button>
-                    </div>
-                </article>
-            </main>
-        </section>
-                    `
-                }
-            })
-    </script>
+    <script src="assets/js/todays-spl.js"></script>
 </body>
 
 </html>

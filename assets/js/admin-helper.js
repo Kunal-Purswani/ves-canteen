@@ -2,15 +2,38 @@ const foodItems = document.getElementById('food-items')
 const removeBtn = document.getElementById('remove-btn')
 
 firebase.database()
-    .ref('Todays_Spl')
+    .ref('Todays_Spl/1')
     .on('value', (snapshot) => {
         if (snapshot.exists()) {
             let data = snapshot.val()
-            todaysSplFoodItems.value = data.value
+            todaysSplFoodItems1.value = data.value
         } else {
-            todaysSplFoodItems.value = 'delete'
+            todaysSplFoodItems1.value = 'delete'
         }
     })
+
+firebase.database()
+    .ref('Todays_Spl/2')
+    .on('value', (snapshot) => {
+        if (snapshot.exists()) {
+            let data = snapshot.val()
+            todaysSplFoodItems2.value = data.value
+        } else {
+            todaysSplFoodItems2.value = 'delete'
+        }
+    })
+
+firebase.database()
+    .ref('Todays_Spl/3')
+    .on('value', (snapshot) => {
+        if (snapshot.exists()) {
+            let data = snapshot.val()
+            todaysSplFoodItems3.value = data.value
+        } else {
+            todaysSplFoodItems3.value = 'delete'
+        }
+    })
+
 
 firebase.database()
     .ref('Menu')
@@ -40,18 +63,48 @@ firebase.database()
 
 const setBtn = document.getElementById('todays-spl-btn')
 setBtn.addEventListener('click', (e) => {
-    if (todaysSplFoodItems.value == 'delete') {
-        firebase.database().ref('Todays_Spl').remove()
+    if (todaysSplFoodItems1.value == 'delete') {
+        firebase.database().ref('Todays_Spl/1').remove()
     } else {
         firebase.database()
-            .ref(todaysSplFoodItems.value)
+            .ref(todaysSplFoodItems1.value)
             .on('value', (snapshot) => {
                 let data = snapshot.val()
                 firebase.database()
-                    .ref('Todays_Spl')
+                    .ref('Todays_Spl/1')
                     .set({
                         ...data,
-                        value: todaysSplFoodItems.value,
+                        value: todaysSplFoodItems1.value,
+                    })
+            })
+    }
+    if (todaysSplFoodItems2.value == 'delete') {
+        firebase.database().ref('Todays_Spl/2').remove()
+    } else {
+        firebase.database()
+            .ref(todaysSplFoodItems2.value)
+            .on('value', (snapshot) => {
+                let data = snapshot.val()
+                firebase.database()
+                    .ref('Todays_Spl/2')
+                    .set({
+                        ...data,
+                        value: todaysSplFoodItems2.value,
+                    })
+            })
+    }
+    if (todaysSplFoodItems3.value == 'delete') {
+        firebase.database().ref('Todays_Spl/3').remove()
+    } else {
+        firebase.database()
+            .ref(todaysSplFoodItems3.value)
+            .on('value', (snapshot) => {
+                let data = snapshot.val()
+                firebase.database()
+                    .ref('Todays_Spl/3')
+                    .set({
+                        ...data,
+                        value: todaysSplFoodItems3.value,
                     })
             })
     }

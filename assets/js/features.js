@@ -211,7 +211,7 @@ if (signModal) {
         <!-- Written Stuff -->
         <div class="modal-content">
             <div class="md">Welcome back!</div>
-            <div><i onclick="signModal.classList.remove('show');" class="fas fa-times"></i></div>
+            <div class="md" style="position: relative; top:-70px; right:-40px;"><i onclick="signModal.classList.remove('show');" class="fas fa-times"></i></div>
         </div>
         <!-- Other way of LogIn's -->
         <ul class="modal-icons flex">
