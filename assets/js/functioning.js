@@ -220,7 +220,7 @@
             title: 'Logged Out Successfully',
           })
           firebase.auth().signOut().then(() => {
-            window.location.replace("https://kunal-purswani.github.io/ves_canteen")
+            window.location.replace("https://kunal-purswani.github.io/ves_canteen/")
           });
         });
       })
@@ -242,7 +242,7 @@ function makeUserDataID(userEmailID){
 firebase.auth().onAuthStateChanged(function(user) {
   if (!user) {
     if(window.location.pathname != '/' && window.location.pathname!='/index.html'){
-      window.location.replace('https://kunal-purswani.github.io/ves_canteen')
+      window.location.replace('https://kunal-purswani.github.io/ves_canteen/')
     }
   }else{
     if(window.location.pathname == '/' || window.location.pathname=='/index.html'){
