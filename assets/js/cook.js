@@ -5,6 +5,7 @@ tableBody = document.querySelector('.orders')
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         let userEmailID = user.email
+        console.log(window.location)
         // console.log(userEmailID)
         firebase.database()
             .ref('Worker/')
@@ -44,7 +45,7 @@ firebase.database()
                             text += '<td><div><button type="button" id="cook" class="width-8 cook btn btn-primary" name="Users_Order/' + users + '/' + order + '">Cook Order</button><button type="button" id="deliver" class="width-8 deliver btn btn-secondary disabled" name="Users_Order/' + users + '/' + order + '" disabled>Deliver Order</button></div></td>'
                         if (data[users][order].Cooking_Status && !data[users][order].Delivery_Status)
                             text += '<td><div><button type="button" id="cook" class="width-8 cook btn btn-secondary disabled" name="Users_Order/' + users + '/' + order + '" disabled>Cooking</button><button type="button" id="deliver" class="width-8 deliver btn btn-primary" name="Users_Order/' + users + '/' + order + '">Deliver Order</button></div></td>'
-                        text += '<td><a target="_blank" rel="noopener noreferrer" class="ord-details btn btn-primary" href="https://kunal-purswani.github.io/ves_canteen/order-details.html?id=' + order + '">Order Detail</a></button></td>'
+                        text += '<td><a target="_blank" rel="noopener noreferrer" class="ord-details btn btn-primary" href="http://127.0.0.1:5502/order-details.html?id=' + order + '">Order Detail</a></button></td>'
                         text += '</tr>\n'
                     }
                 }
