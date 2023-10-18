@@ -91,7 +91,7 @@
 
     static authRedirecting() {
       window.setTimeout(() => {
-        window.location.replace('https://kunal-purswani.github.io/ves_canteen/client-side.html');
+        window.location.replace('http://127.0.0.1:5502/client-side.html');
       }, 500)
     }
 
@@ -108,7 +108,7 @@
     firebaseAuthRedirect(){
       firebase.auth().onAuthStateChanged(function(user) {
         // If user is registered -
-        user ?  window.location.replace('https://kunal-purswani.github.io/ves_canteen/client-side.html') : console.log('none');
+        user ?  window.location.replace('http://127.0.0.1:5502/client-side.html') : console.log('none');
       });
     }
   }
@@ -220,7 +220,7 @@
             title: 'Logged Out Successfully',
           })
           firebase.auth().signOut().then(() => {
-            window.location.replace("https://kunal-purswani.github.io/ves_canteen")
+            window.location.replace("http://127.0.0.1:5502")
           });
         });
       })
@@ -242,11 +242,11 @@ function makeUserDataID(userEmailID){
 firebase.auth().onAuthStateChanged(function(user) {
   if (!user) {
     if(window.location.pathname != '/' && window.location.pathname!='/index.html'){
-      window.location.replace('https://kunal-purswani.github.io/ves_canteen')
+      window.location.replace('http://127.0.0.1:5502')
     }
   }else{
     if(window.location.pathname == '/' || window.location.pathname=='/index.html'){
-      window.location.replace('https://kunal-purswani.github.io/ves_canteen/client-side.html')
+      window.location.replace('http://127.0.0.1:5502/client-side.html')
     }
   }
 });
