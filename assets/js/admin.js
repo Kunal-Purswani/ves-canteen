@@ -9,7 +9,7 @@ const removeContainer = document.querySelector(".remove-container");
 const todaysSplContainer = document.querySelector('.todays-spl-container');
 
 // Admin Side URL
-const adminSRC = "http://127.0.0.1:5502/admin-side.html";
+const adminSRC = "https://kunal-purswani.github.io/ves_canteen/admin-side.html";
 
 // --- Admin Side ---
 if (adminSRC === window.location.href) {

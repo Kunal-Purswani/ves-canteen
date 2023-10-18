@@ -1,5 +1,8 @@
 const foodItems = document.getElementById('food-items')
 const removeBtn = document.getElementById('remove-btn')
+const todaysSplFoodItems1 = document.getElementById('todays-spl-food-items-1');
+const todaysSplFoodItems2 = document.getElementById('todays-spl-food-items-2');
+const todaysSplFoodItems3 = document.getElementById('todays-spl-food-items-3');
 
 firebase.database()
     .ref('Todays_Spl/1')
@@ -34,14 +37,13 @@ firebase.database()
         }
     })
 
-
 firebase.database()
     .ref('Menu')
     .on('value', (snapshot) => {
         if (snapshot.exists()) {
             let data = snapshot.val()
             for (item in data) {
-                foodItems.innerHTML += '<option value="Menu/' + item + '">' + data[item].fields.title + '</option>'
+                foodItems.innerHTML += '<option value="Menu/' + item + '">' + data[item]?.fields?.title + '</option>'
             }
         }
     })
@@ -50,16 +52,16 @@ removeBtn.addEventListener('click', (e) => {
     firebase.database().ref(foodItems.value).remove()
 })
 
-firebase.database()
-    .ref('Menu')
-    .on('value', (snapshot) => {
-        if (snapshot.exists()) {
-            let data = snapshot.val()
-            for (item in data) {
-                todaysSplFoodItems.innerHTML += '<option value="Menu/' + item + '">' + data[item].fields.title + '</option>'
-            }
-        }
-    })
+// firebase.database()
+//     .ref('Menu')
+//     .on('value', (snapshot) => {
+//         if (snapshot.exists()) {
+//             let data = snapshot.val()
+//             for (item in data) {
+//                 todaysSplFoodItems1.innerHTML += '<option value="Menu/' + item + '">' + data[item].fields.title + '</option>'
+//             }
+//         }
+//     })
 
 const setBtn = document.getElementById('todays-spl-btn')
 setBtn.addEventListener('click', (e) => {

@@ -194,9 +194,6 @@
 
   <script src="assets/js/firebase-initialize.js"></script>
   <script>
-    const todaysSplFoodItems1 = document.getElementById('todays-spl-food-items-1');
-    const todaysSplFoodItems2 = document.getElementById('todays-spl-food-items-2');
-    const todaysSplFoodItems3 = document.getElementById('todays-spl-food-items-3');
 
     firebase.database()
       .ref('Menu')
@@ -204,7 +201,7 @@
         if (snapshot.exists()) {
           let data = snapshot.val()
           for (item in data) {
-            todaysSplFoodItems1.innerHTML += '<option value="Menu/' + item + '">' + data[item].fields.title + '</option>'
+            todaysSplFoodItems1.innerHTML += '<option value="Menu/' + item + '">' + data[item]?.fields?.title+ '</option>'
           }
         }
       })
@@ -215,7 +212,7 @@
         if (snapshot.exists()) {
           let data = snapshot.val()
           for (item in data) {
-            todaysSplFoodItems2.innerHTML += '<option value="Menu/' + item + '">' + data[item].fields.title + '</option>'
+            todaysSplFoodItems2.innerHTML += '<option value="Menu/' + item + '">' + data[item]?.fields?.title + '</option>'
           }
         }
       })
@@ -226,7 +223,7 @@
         if (snapshot.exists()) {
           let data = snapshot.val()
           for (item in data) {
-            todaysSplFoodItems3.innerHTML += '<option value="Menu/' + item + '">' + data[item].fields.title + '</option>'
+            todaysSplFoodItems3.innerHTML += '<option value="Menu/' + item + '">' + data[item]?.fields?.title + '</option>'
           }
         }
       })

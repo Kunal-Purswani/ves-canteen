@@ -900,6 +900,10 @@ tr {
   display: none;
 }
 
+.avl-container{
+  display: none;
+}
+
 .show-container {
   display: block;
 }
