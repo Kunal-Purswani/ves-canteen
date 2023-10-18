@@ -399,8 +399,8 @@ function ClientDataFlow(addToCartBtn) {
                             // Gets Data
                             var data = snapshot.val();
                             for (worker in data) {
-                                if (data[worker].email == userEmailID && data[worker].role == 'cook')
-                                    window.location.replace('https://kunal-purswani.github.io/ves_canteen/cook-side.html')
+                                if (data[worker].email == userEmailID && data[worker].role == 'cook'){}
+                                    // window.location.replace('https://kunal-purswani.github.io/ves_canteen/cook-side.html')
                             }
                         }
                     })
