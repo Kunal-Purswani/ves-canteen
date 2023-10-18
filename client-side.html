@@ -177,6 +177,40 @@
     <footer class="customer-footer" id="user-footer" style="margin-top: 10rem;"><!-- Comes Through JS --></footer>
 
     <script src="assets/js/firebase-initialize.js"></script>
+    <script>
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                let userEmailID = user.email
+                // console.log(userEmailID)
+                firebase.database()
+                    .ref('Worker/')
+                    .on('value', function (snapshot) {
+                        if (snapshot.exists()) {
+                            // Gets Data
+                            var data = snapshot.val();
+                            for (worker in data) {
+                                if (data[worker].email == userEmailID && data[worker].role == 'cleaner' && window.location.pathname != '/cleaner-side.html')
+                                    window.location.replace('https://kunal-purswani.github.io/ves_canteen/cleaner-side.html')
+                                if (data[worker].email == userEmailID && data[worker].role == 'cook' && window.location.pathname != '/cook-side.html')
+                                    window.location.replace('https://kunal-purswani.github.io/ves_canteen/cook-side.html')
+                            }
+                        }
+                    })
+                firebase.database()
+                    .ref('Staff/')
+                    .on('value', function (snapshot) {
+                        if (snapshot.exists()) {
+                            // Gets Data
+                            var data = snapshot.val();
+                            for (staff in data) {
+                                if (data[staff].email == userEmailID)
+                                    window.location.replace('https://kunal-purswani.github.io/ves_canteen/staff-side.html')
+                            }
+                        }
+                    })
+            }
+        })
+    </script>
 
     <!-- Creative Features -->
     <script src="assets/js/features.js"></script>
