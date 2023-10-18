@@ -358,21 +358,21 @@ function ClientDataFlow(addToCartBtn) {
             var trimedEmailID = makeUserDataID(userEmailID);
             if (userEmailID == 'd2020.kunal.purswani@ves.ac.in') {
                 window.location = 'https://kunal-purswani.github.io/ves_canteen/admin-side.html'
-            } else {
-                firebase.database()
-                    .ref('Worker/')
-                    .on('value', function (snapshot) {
-                        if (snapshot.exists()) {
-                            // Gets Data
-                            var data = snapshot.val();
-                            for (worker in data) {
-                                if (data[worker].email == userEmailID && data[worker].role == 'cook' && window.location.pathname!='/cook-side.html')
-                                    window.location.replace('https://kunal-purswani.github.io/ves_canteen/cook-side.html')
-                                if (data[worker].email == userEmailID && data[worker].role == 'cleaner' && window.location.pathname!='/cleaner-side.html')
-                                    window.location.replace('https://kunal-purswani.github.io/ves_canteen/cleaner-side.html')
-                            }
-                        }
-                    })
+            // } else {
+            //     firebase.database()
+            //         .ref('Worker/')
+            //         .on('value', function (snapshot) {
+            //             if (snapshot.exists()) {
+            //                 // Gets Data
+            //                 var data = snapshot.val();
+            //                 for (worker in data) {
+            //                     if (data[worker].email == userEmailID && data[worker].role == 'cook' && window.location.pathname!='/cook-side.html')
+            //                         window.location.replace('https://kunal-purswani.github.io/ves_canteen/cook-side.html')
+            //                     if (data[worker].email == userEmailID && data[worker].role == 'cleaner' && window.location.pathname!='/cleaner-side.html')
+            //                         window.location.replace('https://kunal-purswani.github.io/ves_canteen/cleaner-side.html')
+            //                 }
+            //             }
+            //         })
 
                 if (window.location.href != 'https://kunal-purswani.github.io/ves_canteen/staff-side.html') {
                     firebase.database()
