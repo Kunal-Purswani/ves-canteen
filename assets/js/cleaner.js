@@ -14,7 +14,7 @@ firebase.auth().onAuthStateChanged((user) => {
                     var data = snapshot.val();
                     for (worker in data) {
                         if (data[worker].email == userEmailID && data[worker].role == 'cleaner' && window.location.pathname!='/cleaner-side.html')
-                            window.location.replace('http://127.0.0.1:5502/cleaner-side.html')
+                            window.location.replace('https://kunal-purswani.github.io/ves_canteen/cleaner-side.html')
                     }
                 }
             })
