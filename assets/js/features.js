@@ -162,7 +162,7 @@ window.onclick = function(event) {
 var signUp_UI, signIn_UI;
 if (signUpModal){
     signUp_UI = signUpModal.innerHTML = `
-    <div class="modal-container">
+    <div class="modal-container" style="z-index: 10;">
         <!-- Written Stuff -->
         <div class="modal-content">
             <div class="md">Welcome to <br><span class="clr-red md">VES</span> <span class="clr-green md">Canteen</span></div>
@@ -207,7 +207,7 @@ if (signUpModal){
 if (signModal) {
     signIn_UI = signModal.innerHTML = `
     <!-- Main Card -->
-    <div class="modal-container">
+    <div class="modal-container" style="z-index:10;">
         <!-- Written Stuff -->
         <div class="modal-content">
             <div class="md">Welcome back!</div>
