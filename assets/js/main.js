@@ -62,9 +62,12 @@ function displayMenuItems(menuItems) {
             <figure>
                 <h2>${item.fields.title}</h2>
                 <div class="item-category">${item.fields.category}</div>
-                <div class="flex" style="margin-top: 10px;">
-                    <i class="fas fa-fire"></i>
-                    <p>${item.fields.caleories}</p>
+                <div class="flex space-between align-items-start" style="margin-top: 10px;">
+                    <div>
+                        <i class="fas fa-fire"></i>
+                        <p>${item.fields.caleories}</p>
+                    </div>
+                    <button class="btn btn-warning" id="ratings" data-toggle="modal" data-target="#myModal" data-id=${item.sys.id}>Rate</i></button>
                 </div>
             </figure>
             <hr style="margin: 10px 0;">
@@ -291,6 +294,24 @@ function clearUserCart(addItem, addToCartBtn, trimedEmailID) {
             addToCartBtn[item.FoodID - 1].innerHTML = 'Add to Cart';
         })
     }
+    let c = []
+    addItem.forEach(item => {
+        // console.log(item.FoodID - 1)
+        firebase.database()
+            .ref('Menu/' + (item.FoodID - 1))
+            .on('value', (snapshot) => {
+                if (snapshot.exists()) {
+                    let data = snapshot.val()
+                    c.push(data.count)
+                    // console.log(data)
+                }
+            })
+    })
+    addItem.forEach((item, i) => {
+        firebase.database().ref('Menu/' + (item.FoodID - 1)).update({
+            count: c[i] == undefined ? item.Quantity : c[i] + item.Quantity
+        })
+    })
 
     // Empty Local Cart 
     addItem = []
@@ -358,21 +379,21 @@ function ClientDataFlow(addToCartBtn) {
             var trimedEmailID = makeUserDataID(userEmailID);
             if (userEmailID == 'd2020.kunal.purswani@ves.ac.in') {
                 window.location = 'https://kunal-purswani.github.io/ves_canteen/admin-side.html'
-            // } else {
-            //     firebase.database()
-            //         .ref('Worker/')
-            //         .on('value', function (snapshot) {
-            //             if (snapshot.exists()) {
-            //                 // Gets Data
-            //                 var data = snapshot.val();
-            //                 for (worker in data) {
-            //                     if (data[worker].email == userEmailID && data[worker].role == 'cook' && window.location.pathname!='/cook-side.html')
-            //                         window.location.replace('https://kunal-purswani.github.io/ves_canteen/cook-side.html')
-            //                     if (data[worker].email == userEmailID && data[worker].role == 'cleaner' && window.location.pathname!='/cleaner-side.html')
-            //                         window.location.replace('https://kunal-purswani.github.io/ves_canteen/cleaner-side.html')
-            //                 }
-            //             }
-            //         })
+                // } else {
+                //     firebase.database()
+                //         .ref('Worker/')
+                //         .on('value', function (snapshot) {
+                //             if (snapshot.exists()) {
+                //                 // Gets Data
+                //                 var data = snapshot.val();
+                //                 for (worker in data) {
+                //                     if (data[worker].email == userEmailID && data[worker].role == 'cook' && window.location.pathname!='/cook-side.html')
+                //                         window.location.replace('https://kunal-purswani.github.io/ves_canteen/cook-side.html')
+                //                     if (data[worker].email == userEmailID && data[worker].role == 'cleaner' && window.location.pathname!='/cleaner-side.html')
+                //                         window.location.replace('https://kunal-purswani.github.io/ves_canteen/cleaner-side.html')
+                //                 }
+                //             }
+                //         })
 
                 if (window.location.href != 'https://kunal-purswani.github.io/ves_canteen/staff-side.html') {
                     firebase.database()

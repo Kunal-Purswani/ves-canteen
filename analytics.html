@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VES Canteen | Site</title>
+
+    <!-- Page Icon -->
+    <link rel="Micosoft icon" href="https://vesit.ves.ac.in/logo.png" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
+
+    <!-- Style Sheets -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/utilities.css" />
+    <link rel="stylesheet" href="assets/css/mobile.css" />
+    <link rel="stylesheet" href="assets/css/animations.css" />
+
+    <!-- Firebase Connectivity Using CDN -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-storage.js"></script>
+
+    <!-- Sweet Alert Pop Modal -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- NavBar -->
+    <header class="navbar">
+        <div class="container flex text-center jc-ai-center">
+            <!-- Left Navigation -->
+            <div class="site-title flex align-item-center">
+                <div>
+                    <a href="index.html">
+                        <h1>
+                            <span class="clr-red">VES</span>
+                            <span class="clr-green">Canteen Admin</span>
+                        </h1>
+                    </a>
+                </div>
+                <!-- Toggle Bars -->
+                <div class="toggle-bars mybar">
+                    <div class="bars bar-1"></div>
+                    <div class="bars bar-2"></div>
+                    <div class="bars bar-3"></div>
+                </div>
+            </div>
+            <!-- Right Navigation -->
+            <nav class="site-nav flex left-nav align-item-center">
+                <ul class="flex">
+                    <!-- <li><a href="order.html">Orders</a></li> -->
+                    <li><a href="admin-side.html">Product Management</a></li>
+                    <li><a href="add-staff.html">Add Staff</a></li>
+                    <li><a href="add-worker.html">Add Worker</a></li>
+                    <li><a href="analytics.html">Analytics</a></li>
+                    <button class="btn" id="userlogout" style="padding: 10px 20px">
+                        Log Out
+                    </button>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Navbar -->
+    <header class="mob-navbar">
+        <nav class="nav container">
+            <ul class="mob-ul">
+                <!-- <li><a href="orders.html">Orders</a></li> -->
+                <li><a href="admin-side.html">Product Management</a></li>
+                <li><a href="add-staff.html">Add Staff</a></li>
+                <li><a href="add-worker.html">Add Worker</a></li>
+                <button class="btn" id="userlogout" style="padding: 10px 20px">
+                    Log Out
+                </button>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Product Management -->
+    <section class="product-management">
+        <div class="container-min grid">
+            <div class="title md text-center">Analytics</div>
+            <hr />
+            <article class="choose-operation text-center">
+                <button class="btn p-1" id="a-sales">
+                    Sales
+                </button>
+                <button class="btn p-1" id="a-most-sold">
+                    Most Selling Items
+                </button>
+            </article>
+        </div>
+    </section>
+
+    <section class="add-product a-sales-container">
+        <div class="container-min grid">
+            <div class="title md text-center">Sales</div>
+            <hr />
+            <!-- Add Menu Item -->
+            <article class="menu-item text-center flex">
+                <!-- <img src="assets/images/sandwich1.jpg" alt="Product image" /> -->
+
+                <div class="item-info sales-item-info">
+                    <div class="month my-1">
+                        <select name="Categories" id="month">
+                            <option value="/01/">January</option>
+                            <option value="/02/">February</option>
+                            <option value="/03/">March</option>
+                            <option value="/04/">April</option>
+                            <option value="/05/">May</option>
+                            <option value="/06/">June</option>
+                            <option value="/07/">July</option>
+                            <option value="/08/">August</option>
+                            <option value="/09/">September</option>
+                            <option value="/10/">October</option>
+                            <option value="/11/">November</option>
+                            <option value="/12/">December</option>
+                        </select>
+                        <select name="Categories" id="year">
+                            <option value="/2023">2023</option>
+                            <option value="/2024">2024</option>
+                        </select>
+                    </div>
+                    <div class="my-1 text-center">
+                        <button class="btn" id="getBtn">Get record</button>
+                    </div>
+                    <div class="c-div">
+                        <canvas id="myChart" class="c"></canvas>
+                    </div>
+                    <div class="ndf"></div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="add-product remove a-most-sold-container">
+        <div class="container-min grid">
+            <div class="title md text-center">Most Selling Items</div>
+            <hr />
+            <!-- Add Menu Item -->
+            <article class="menu-item text-center">
+                <div class="item-info">
+                    <div class="c-div1">
+                        <canvas id="myChart1" class="c1"></canvas>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <script src="assets/js/firebase-initialize.js"></script>
+    <script>
+
+        firebase.database()
+            .ref('Menu')
+            .on('value', (snapshot) => {
+                if (snapshot.exists()) {
+                    let data = snapshot.val()
+                    for (item in data) {
+                        todaysSplFoodItems1.innerHTML += '<option value="Menu/' + item + '">' + data[item]?.fields?.title + '</option>'
+                    }
+                }
+            })
+
+        firebase.database()
+            .ref('Menu')
+            .on('value', (snapshot) => {
+                if (snapshot.exists()) {
+                    let data = snapshot.val()
+                    for (item in data) {
+                        todaysSplFoodItems2.innerHTML += '<option value="Menu/' + item + '">' + data[item]?.fields?.title + '</option>'
+                    }
+                }
+            })
+
+        firebase.database()
+            .ref('Menu')
+            .on('value', (snapshot) => {
+                if (snapshot.exists()) {
+                    let data = snapshot.val()
+                    for (item in data) {
+                        todaysSplFoodItems3.innerHTML += '<option value="Menu/' + item + '">' + data[item]?.fields?.title + '</option>'
+                    }
+                }
+            })
+
+        firebase.database()
+            .ref('Todays_Spl/1')
+            .on('value', (snapshot) => {
+                if (snapshot.exists()) {
+                    let data = snapshot.val()
+                    todaysSplFoodItems1.value = data.value
+                } else {
+                    todaysSplFoodItems1.value = 'delete'
+                }
+            })
+
+        firebase.database()
+            .ref('Todays_Spl/2')
+            .on('value', (snapshot) => {
+                if (snapshot.exists()) {
+                    let data = snapshot.val()
+                    todaysSplFoodItems2.value = data.value
+                } else {
+                    todaysSplFoodItems2.value = 'delete'
+                }
+            })
+
+        firebase.database()
+            .ref('Todays_Spl/3')
+            .on('value', (snapshot) => {
+                if (snapshot.exists()) {
+                    let data = snapshot.val()
+                    todaysSplFoodItems3.value = data.value
+                } else {
+                    todaysSplFoodItems3.value = 'delete'
+                }
+            })
+    </script>
+
+    <script>
+        const ctx = document.getElementById('myChart');
+        const ctx1 = document.getElementById('myChart1');
+        const getBtn = document.getElementById('getBtn')
+        const month = document.getElementById('month')
+        const year = document.getElementById('year')
+        const cDiv = document.querySelector('.c-div')
+        const ndf = document.querySelector('.ndf')
+
+        let dates = {}
+        getBtn.addEventListener('click', (e) => {
+            console.log('clicked')
+            cDiv.classList.add('c-div-show')
+            firebase.database().ref('Users_Order').on('value', (snapshot) => {
+                if (snapshot.exists()) {
+                    let users = snapshot.val()
+                    for (const user in users) {
+                        for (const order in users[user]) {
+                            if (users[user][order]['Order_Date'].includes(month.value) && users[user][order]['Order_Date'].includes(year.value)) {
+                                if (dates[users[user][order]['Order_Date']] == undefined) {
+                                    dates[users[user][order]['Order_Date']] = users[user][order]['User_Cart']['Total_Amount']
+                                } else {
+                                    dates[users[user][order]['Order_Date']] += users[user][order]['User_Cart']['Total_Amount']
+                                }
+                            }
+                        }
+                    }
+                    if (Object.keys(dates).length) {
+                        ndf.innerHTML = ''
+                        new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: Object.keys(dates),
+                                datasets: [{
+                                    data: Object.values(dates),
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                plugins: {
+                                    legend: {
+                                        display: false
+                                    },
+                                },
+                                scales: {
+                                    x: {
+                                        title: {
+                                            display: true,
+                                            text: 'Dates'
+                                        }
+                                    },
+                                    y: {
+                                        title: {
+                                            display: true,
+                                            text: 'Sales (in Rs.)'
+                                        },
+                                        beginAtZero: true,
+                                    }
+                                }
+                            }
+                        });
+                        dates = {}
+                    } else {
+                        ndf.innerHTML = '<h3>No Data Found!</h3>'
+                        console.log(Object.keys(dates).length)
+                        cDiv.classList.remove('c-div-show')
+                    }
+                }
+            })
+        })
+        firebase.database().ref('Menu/').on('value', (snapshot) => {
+            if (snapshot.exists()) {
+                let dict = {}
+                let foodItems = snapshot.val()
+                foodItems.forEach(foodItem => {
+                    if (foodItem.count != undefined || foodItem.count > 0)
+                        dict[foodItem['fields']['title']] = foodItem.count
+                })
+                new Chart(ctx1, {
+                    type: 'pie',
+                    data: {
+                        labels: Object.keys(dict),
+                        datasets: [{
+                            label: "online tutorial subjects",
+                            data: Object.values(dict),
+                            backgroundColor: ['yellow', 'aqua', 'pink', 'lightgreen', 'gold', 'lightblue'],
+                            hoverOffset: 5
+                        }],
+                    },
+                    options: {
+                        responsive: false,
+                    },
+                });
+            }
+        })
+    </script>
+
+
+    <!-- Controls User Stuff -->
+    <script src="assets/js/admin.js"></script>
+    <!-- Page Animations -->
+    <script src="assets/js/animations.js"></script>
+    <!-- Menu & Admin Stuff -->
+    <script src="assets/js/features.js"></script>
+    <!-- Controls User Stuff -->
+    <script src="assets/js/functioning.js"></script>
+
+    <script src="assets/js/admin-helper.js"></script>
+</body>
+
+</html>

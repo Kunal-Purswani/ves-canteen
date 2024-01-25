@@ -78,15 +78,18 @@ function filtering(addToCartBtn) {
 function displayMenuItems(menuItems) {
     let displayMenu = menuItems.map(function (item) {
         return `
-        <article class="menu-item" id="${item.sys.id}">
+        <article class="menu-item" id=${item.sys.id}>
             <img src="${item.fields.image.fields.file.url}" loading="lazy" alt="Product image">
             <div class="item-info">
             <figure>
                 <h2>${item.fields.title}</h2>
                 <div class="item-category">${item.fields.category}</div>
-                <div class="flex" style="margin-top: 10px;">
-                    <i class="fas fa-fire"></i>
-                    <p>${item.fields.caleories}</p>
+                <div class="flex space-between align-items-start" style="margin-top: 10px;">
+                    <div>
+                        <i class="fas fa-fire"></i>
+                        <p>${item.fields.caleories}</p>
+                    </div>
+                    <button class="btn btn-warning" id="ratings" data-toggle="modal" data-target="#myModal" data-id=${item.sys.id}>Rate</i></button>
                 </div>
             </figure>
             <hr style="margin: 10px 0;">
@@ -399,8 +402,8 @@ function ClientDataFlow(addToCartBtn) {
                             // Gets Data
                             var data = snapshot.val();
                             for (worker in data) {
-                                if (data[worker].email == userEmailID && data[worker].role == 'cook'){}
-                                    // window.location.replace('https://kunal-purswani.github.io/ves_canteen/cook-side.html')
+                                if (data[worker].email == userEmailID && data[worker].role == 'cook') { }
+                                // window.location.replace('https://kunal-purswani.github.io/ves_canteen/cook-side.html')
                             }
                         }
                     })

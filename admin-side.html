@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VES Canteen | Sie</title>
+  <title>VES Canteen | Site</title>
 
   <!-- Page Icon -->
   <link rel="Micosoft icon" href="https://vesit.ves.ac.in/logo.png" />
@@ -59,6 +59,7 @@
           <li><a href="admin-side.html">Product Management</a></li>
           <li><a href="add-staff.html">Add Staff</a></li>
           <li><a href="add-worker.html">Add Worker</a></li>
+          <li><a href="analytics.html">Analytics</a></li>
           <button class="btn" id="userlogout" style="padding: 10px 20px">
             Log Out
           </button>
@@ -201,7 +202,7 @@
         if (snapshot.exists()) {
           let data = snapshot.val()
           for (item in data) {
-            todaysSplFoodItems1.innerHTML += '<option value="Menu/' + item + '">' + data[item]?.fields?.title+ '</option>'
+            todaysSplFoodItems1.innerHTML += '<option value="Menu/' + item + '">' + data[item]?.fields?.title + '</option>'
           }
         }
       })
@@ -228,7 +229,7 @@
         }
       })
 
-      firebase.database()
+    firebase.database()
       .ref('Todays_Spl/1')
       .on('value', (snapshot) => {
         if (snapshot.exists()) {
@@ -239,7 +240,7 @@
         }
       })
 
-      firebase.database()
+    firebase.database()
       .ref('Todays_Spl/2')
       .on('value', (snapshot) => {
         if (snapshot.exists()) {
@@ -250,7 +251,7 @@
         }
       })
 
-      firebase.database()
+    firebase.database()
       .ref('Todays_Spl/3')
       .on('value', (snapshot) => {
         if (snapshot.exists()) {
@@ -260,6 +261,16 @@
           todaysSplFoodItems3.value = 'delete'
         }
       })
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        const userEmailID = user.email
+        var trimedEmailID = makeUserDataID(userEmailID);
+        if (userEmailID != 'd2020.kunal.purswani@ves.ac.in') {
+          window.location = 'https://kunal-purswani.github.io/ves_canteen/index.html'
+        }
+      }
+    })
   </script>
 
   <!-- Controls User Stuff -->
