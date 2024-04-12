@@ -14,8 +14,8 @@ const salesContainer = document.querySelector('.a-sales-container');
 const mostSoldContainer = document.querySelector('.a-most-sold-container');
 
 // Admin Side URL
-const adminSRC = "https://kunal-purswani.github.io/ves_canteen/admin-side.html";
-const analyticsSRC = "https://kunal-purswani.github.io/ves_canteen/analytics.html";
+const adminSRC = "http://127.0.0.1:5502/admin-side.html";
+const analyticsSRC = "http://127.0.0.1:5502/analytics.html";
 
 // --- Admin Side ---
 if (window.location.href === adminSRC) {

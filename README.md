@@ -21,5 +21,5 @@ Project is created with:
 Contributions are always welcome! Please read the [contribution guidelines](https://github.com/user/repo/blob/branch/other_file.md) first.
 
 ## Link of this site
-<https://kunal-purswani.github.io/ves_canteen>
+<http://127.0.0.1:5502>
 

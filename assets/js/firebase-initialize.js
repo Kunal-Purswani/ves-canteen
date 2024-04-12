@@ -1,13 +1,11 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyDVQhGvMaGxl7oqHg89vGkGGLnnd2norDA",
-  authDomain: "canteen-2-fabee.firebaseapp.com",
-  databaseURL: "https://canteen-2-fabee-default-rtdb.firebaseio.com",
-  projectId: "canteen-2-fabee",
-  storageBucket: "canteen-2-fabee.appspot.com",
-  messagingSenderId: "184324862758",
-  appId: "1:184324862758:web:668ca3b02da8a750d887e7",
-  measurementId: "G-KG48JZKKL8",
-  databaseURL: "https://canteen-2-fabee-default-rtdb.firebaseio.com/"
+  apiKey: "AIzaSyBlQYvFIHDCFGu-XA9p5vuFX-kHBmh4z-A",
+  authDomain: "canteen-2033a.firebaseapp.com",
+  projectId: "canteen-2033a",
+  storageBucket: "canteen-2033a.appspot.com",
+  messagingSenderId: "392234013",
+  appId: "1:392234013:web:a79ed45f359c0460f9b2f4",
+  databaseURL: "https://canteen-2033a-default-rtdb.firebaseio.com/"
 };
 
 // Initialize Firebase

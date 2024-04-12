@@ -190,9 +190,9 @@
                             var data = snapshot.val();
                             for (worker in data) {
                                 if (data[worker].email == userEmailID && data[worker].role == 'cleaner' && window.location.pathname != '/cleaner-side.html')
-                                    window.location.replace('https://kunal-purswani.github.io/ves_canteen/cleaner-side.html')
+                                    window.location.replace('http://127.0.0.1:5502/cleaner-side.html')
                                 if (data[worker].email == userEmailID && data[worker].role == 'cook' && window.location.pathname != '/cook-side.html')
-                                    window.location.replace('https://kunal-purswani.github.io/ves_canteen/cook-side.html')
+                                    window.location.replace('http://127.0.0.1:5502/cook-side.html')
                             }
                         }
                     })
@@ -204,7 +204,7 @@
                             var data = snapshot.val();
                             for (staff in data) {
                                 if (data[staff].email == userEmailID)
-                                    window.location.replace('https://kunal-purswani.github.io/ves_canteen/staff-side.html')
+                                    window.location.replace('http://127.0.0.1:5502/staff-side.html')
                             }
                         }
                     })
